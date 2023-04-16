@@ -20,9 +20,9 @@ app.get("/", function (req, res) {
 
 
 // your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
-});
+// app.get("/api/hello", function (req, res) {
+//   res.json({greeting: 'hello API'});
+// });
 
 app.get("/api/:reqDate?", function(req, res) {
   let dateStringExp = /^[0-9]{4}-([0-9]{1}|[0-9]{2})-([0-9]{1}|[0-9]{2})$/
