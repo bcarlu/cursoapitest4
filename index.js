@@ -19,10 +19,9 @@ app.get("/", function (req, res) {
 });
 
 
-// your first API endpoint... 
-// app.get("/api/hello", function (req, res) {
-//   res.json({greeting: 'hello API'});
-// });
+app.get("/api", function (req, res) {
+  res.json({ unix: new Date().getTime(), utc: new Date().toUTCString() })
+});
 
 app.get("/api/:reqDate?", function(req, res) {
   let dateStringExp = /^[0-9]{4}-([0-9]{1}|[0-9]{2})-([0-9]{1}|[0-9]{2})$/
@@ -47,11 +46,11 @@ app.get("/api/:reqDate?", function(req, res) {
     let UnixDate = Date.parse(reqDate)
     res.json({ unix: UnixDate, utc: UTCDate })
   } 
-  else if(req.params.reqDate == undefined){
-    let UTCDate = new Date().toUTCString()
-    let UnixDate = Date.parse(new Date())
-    res.json({ unix: UnixDate, utc: UTCDate })
-  }
+  // else if(req.params.reqDate == undefined){
+  //   let UTCDate = new Date().toUTCString()
+  //   let UnixDate = Date.parse(new Date())
+  //   res.json({ unix: UnixDate, utc: UTCDate })
+  // }
   else {
     res.json({ error : "Invalid Date" })
   }
